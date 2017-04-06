@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+.editorconfig
+
+node_modules/
+www/
+platforms/
+plugins/
+typings/
