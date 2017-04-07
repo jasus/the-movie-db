@@ -14,3 +14,82 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+// COLORS
+$black-thin: #1d1d1d;
+
+ion-header{
+  ion-navbar{
+    .toolbar-background{
+      background: $black-thin;
+    }
+
+    .toolbar-content{
+      ion-title{
+        .toolbar-title{
+          color: white;
+        }
+      }
+    }
+
+    .back-button{
+      color: white;
+    }
+
+    .bar-button{
+      color: white;
+    }
+  }
+
+}
+
+ion-menu{
+  ion-header{
+    ion-toolbar{
+      .toolbar-background{
+        background: $black-thin;
+      }
+
+      .toolbar-content{
+        ion-title{
+          .toolbar-title{
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  ion-content{
+    .scroll-content{
+      background-color: $black-thin;
+      ion-list{
+        button.item{
+          background-color: $black-thin;
+          .item-inner{
+            border: none;
+          }
+          .label{
+            color: white;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+ion-loading{
+  .loading-wrapper{
+    background-color: $black-thin !important;
+    .loading-content{
+      color: white;
+    }
+  }
+}
+
+ion-content{
+  .scroll-content{
+    background-color: black;
+  }
+}
+

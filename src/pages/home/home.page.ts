@@ -9,7 +9,8 @@ import { TheMovieDBAPI } from '../../services/services';
 })
 export class HomePage {
 
-  discover: any;
+  discovers: any;
+  imageURL: any;
 
   constructor(private nav: NavController,
               private theMovieDBAPI: TheMovieDBAPI,
@@ -19,13 +20,13 @@ export class HomePage {
   }
 
 
-  init(){
-    /*let loader = this.loadingController.create({
+  ionViewDidLoad(){
+    let loader = this.loadingController.create({
       content: 'Getting discover...'
     });
 
     let object = {
-      language: 'en-US',
+      language: 'es-ES',
       sort_by: 'popularity.desc',
       include_video: false,
       primReleaseDateGTE: '2017-01-01',
@@ -33,12 +34,17 @@ export class HomePage {
       page: '1'
     };
 
-      loader.present().then(() => {
+    loader.present().then(() => {
       this.theMovieDBAPI.getDiscover(object).subscribe(data => {
-        this.discover = data;
+        this.discovers = data;
         loader.dismiss();
       });
-    });*/
+    });
+  }
+
+
+  init(){
+    this.imageURL = 'https://image.tmdb.org/t/p/w185';
   }
 
 }
