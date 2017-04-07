@@ -1,3 +1,25 @@
-page-home {
+#page-home {
+  .title{
+    color: white;
+  }
 
+  ion-card{
+    h2{
+      max-height: 2.4em;
+      line-height: 1.2em;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: block;
+      overflow: hidden;
+      color: white;
+    }
+    img{
+      min-height: 240px;
+      object-fit: cover;
+    }
+  }
+
+  ion-card{
+    background-color: $black-thin;
+  }
 }
