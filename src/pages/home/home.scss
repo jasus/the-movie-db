@@ -17,6 +17,10 @@
       min-height: 240px;
       object-fit: cover;
     }
+    .no-image{
+      min-height: 240px;
+      background-color: black;
+    }
   }
 
   ion-card{
