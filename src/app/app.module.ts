@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
-import { HomePage, ListPage } from '../pages/pages';
+import { HomePage, ListPage, SearchPage } from '../pages/pages';
 import { TheMovieDBAPI } from '../services/services';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -15,7 +15,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    SearchPage
   ],
   providers: [
     StatusBar,

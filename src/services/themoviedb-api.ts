@@ -39,6 +39,19 @@ export class TheMovieDBAPI {
       });
   }
 
+  searchByTitle(data) : Observable<any>{
+    let url = `${this.baseURL}/search/movie?api_key=${this.API_KEY}`;
+
+    url += this.addToURL(data.language, '&language=');
+    url += this.addToURL(data.query, '&query=');
+    url += this.addToURL(data.page, '&page=');
+
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
   getCurrentDiscover(){
     return this.currentDiscover;
   }

@@ -4,6 +4,8 @@
   }
 
   ion-card{
+    background-color: $black-thin;
+
     h2{
       max-height: 2.4em;
       line-height: 1.2em;
@@ -13,17 +15,18 @@
       overflow: hidden;
       color: white;
     }
-    img{
-      min-height: 240px;
-      object-fit: cover;
+    .image{
+      max-height: 240px;
+      img{
+        min-height: 240px;
+        object-fit: cover;
+      }
     }
+
     .no-image{
       min-height: 240px;
       background-color: black;
     }
   }
 
-  ion-card{
-    background-color: $black-thin;
-  }
 }

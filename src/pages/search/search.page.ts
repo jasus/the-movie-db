@@ -3,18 +3,18 @@ import { LoadingController, NavController } from 'ionic-angular';
 
 import { TheMovieDBAPI } from '../../services/services';
 
-import { SearchPage } from '../pages';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.page.html'
+  selector: 'page-search',
+  templateUrl: 'search.page.html'
 })
-export class HomePage {
+export class SearchPage {
 
-  discovers: any;
+  searchResult: any;
   imageURL: any;
   movies: any;
   queryObject: any;
+  queryText: any;
 
 
   constructor(private nav: NavController,
@@ -24,32 +24,14 @@ export class HomePage {
     this.init();
   }
 
-
-  ionViewDidLoad(){
-    let loader = this.loadingController.create({
-      content: 'Getting discover...'
-    });
-
-
-    loader.present().then(() => {
-      this.theMovieDBAPI.getDiscover(this.queryObject).subscribe(data => {
-        this.discovers = data;
-        this.movies = this.discovers.results;
-        loader.dismiss();
-      });
-    });
-  }
-
-
   init(){
     this.imageURL = 'https://image.tmdb.org/t/p/w185';
 
+    this.queryText = '';
+
     this.queryObject = {
       language: 'es-ES',
-      sort_by: 'popularity.desc',
-      include_video: false,
-      primReleaseDateGTE: '2017-01-01',
-      primReleaseDateLTE: '2018-12-30',
+      query: '',
       page: 1
     };
 
@@ -60,9 +42,9 @@ export class HomePage {
 
     this.queryObject.page = this.queryObject.page + 1;
 
-    this.theMovieDBAPI.getDiscover(this.queryObject).subscribe(data => {
-      this.discovers = data;
-      this.movies.push.apply(this.movies, this.discovers.results);
+    this.theMovieDBAPI.searchByTitle(this.queryObject).subscribe(data => {
+      this.searchResult = data;
+      this.movies.push.apply(this.movies, this.searchResult.results);
 
       infiniteScroll.complete();
 
@@ -72,13 +54,27 @@ export class HomePage {
   }
 
   checkMoreData(infiniteScroll){
-    if(this.queryObject.page >= this.discovers.total_pages){
+    if(this.queryObject.page >= this.searchResult.total_pages){
       infiniteScroll.enable(false);
     }
   }
 
-  goSearchPage(){
-    this.nav.push(SearchPage);
+  search(){
+
+    let loader = this.loadingController.create({
+      content: 'Searching...'
+    });
+
+    this.queryObject.page = 1;
+    this.queryObject.query = encodeURI(this.queryText);
+
+    loader.present().then(() => {
+      this.theMovieDBAPI.searchByTitle(this.queryObject).subscribe(data => {
+        this.searchResult = data;
+        this.movies = this.searchResult.results;
+        loader.dismiss();
+      });
+    });
   }
 
 }
