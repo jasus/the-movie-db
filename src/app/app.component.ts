@@ -20,8 +20,19 @@ export class MyApp {
               private googlePlus: GooglePlus,
               private loadingController: LoadingController) {
 
+    platform.ready().then(() => {
+      this.hideSplashScreen();
+    });
     this.initializeApp();
 
+  }
+
+  hideSplashScreen() {
+    if (this.splashScreen) {
+      setTimeout(() => {
+        this.splashScreen.hide();
+      }, 100);
+    }
   }
 
   initializeApp() {
