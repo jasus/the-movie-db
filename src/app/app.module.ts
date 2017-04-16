@@ -9,6 +9,7 @@ import { TheMovieDBAPI } from '../services/services';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TheMovieDBAPI
+    TheMovieDBAPI,
+    GooglePlus
   ]
 })
 export class AppModule {}
